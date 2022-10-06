@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Calculate discount</title>
+ </head>
+<body>
+<h1>Tejeswara Rao computes discounts </h1>
+<form>
+    <label for="base_amount">Enter base amount</label>
+    <input type="number" id="base_amount" name="base_amount" value="20" >
+    <br>
+    <label for="discount_amount">Enter the discount percentage</label>
+    <input type="number" id="discount_amount" name="discount_amount" value="10">
+    <br>
+    <input type="button" onclick="discount()" value="Apply Discount">
+<br>
+<div id="result">Result will be displayed here </div>
+</form>
+<br>
+<form>
+    <input type="radio" id="multiply" name="arithmetic" value="times" onclick="chooseOp()" checked >
+    <label for="multiply">*</label></br>
+  
+    <input type="radio" id="divide" name="arithmetic" onclick="chooseOp()" value="divide">
+    <label for="divide">/</label></br>
+  
+    <input type="radio" id="exponential" name="arithmetic" onclick="chooseOp()" value="exponent">
+    <label for="exponential">**</label></br>
+  </form>
+  <br>
+  <div id="calculate">Calculations are displayed here</div>
+<script> 
+function discount(){
+    let baseValue=document.getElementById("base_amount").value;
+    let discountValue=document.getElementById("discount_amount").value;
+    out=document.getElementById("result");
+    let result="";
+    let discountedAmount=baseValue-baseValue*discountValue/100;
+    for(i=1;i<=5;i++){
+
+        result=result+discountedAmount*i+" ";
+    }
+    out.innerHTML = "Discounted amounts for base "+baseValue+" are "+result;
+}
+function chooseOp(){
+    let baseValue=document.getElementById("base_amount").value;
+    let discountValue=document.getElementById("discount").value;
+    out=document.getElementById("calculate");
+    result = 0;
+            display = "";
+            if (document.getElementById("multiply").checked == true) {
+                result = +baseValue * discountValue
+                display = "Multiplication of " + baseValue + " and " + discountValue + " is " + result
+            } else if (document.getElementById("divide").checked == true) {
+                result = baseValue / discountValue
+                display = "Division of " + baseValue + " and " + discountValue + " is " + result
+            } else if (document.getElementById("exponential").checked == true) {
+                result = baseValue ** discountValue
+                display = "Exponent of " + baseValue + " and " + discountValue + " is " + result
+            } 
+            out.innerHTML = display
+    
+}
+
+</script>
+
+</body>
+</html>
